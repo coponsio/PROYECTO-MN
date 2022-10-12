@@ -1,5 +1,6 @@
-let INDEX_Pregunta=0;
+let INDEX_Pregunta = generateRandomInt(0,9);
 let puntaje=0;
+let n=0;
 cargarPregunta(INDEX_Pregunta)
 
 
@@ -65,16 +66,20 @@ else
         icon:"error",
 });
 }
-INDEX_Pregunta++;
-if(INDEX_Pregunta>=BaseDePreguntas.length)
+n++;
+INDEX_Pregunta = generateRandomInt(0,9);
+if(n>= 5)
 {
 await  Swal.fire({
     title: "fin del juego",
     text: `Tu puntaje fue de:"${puntaje}/${BaseDePreguntas.length}"`,
    
 });
-INDEX_pregunta=0;
 puntaje=0;
+n=0;
 }
 cargarPregunta(INDEX_Pregunta)
+}
+function generateRandomInt(min,max){
+    return Math.floor((Math.random() * (max-min)) +min);
 }
